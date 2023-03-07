@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+div {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: green;
+  /*position: absolute;*/
+  animation-direction: ;
+  }

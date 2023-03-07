@@ -1,0 +1,43 @@
+@charset "UTF-8";
+.bounce-ball1 {
+  position: relative;
+  left: 100px;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #000;
+  animation-name: bounce1;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  }
+@keyframes bounce1 {
+  to {
+    top: 0;
+    }
+  from {
+    top: 300px;
+    }
+  }
+.bounce-ball2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: tomato;
+  position: absolute;
+  animation: bounce2 2s linear infinite;
+  }
+@keyframes bounce2 {
+  /* keyframes 안에 함수를 따로 지정할 수도 있습니다. */
+  from,
+  to {
+    bottom: 0;
+    animation-timing-function: ease-out;
+    }
+  50% {
+    bottom: 300px;
+    animation-timing-function: ease-in;
+    }
+  }
