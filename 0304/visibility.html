@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      .square {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+      }
+      .d-none {
+        /*display: none;*/
+        background-color: red;
+      }
+      .invisible {
+        /*visibility: hidden;*/
+        background-color: orangered;
+      }
+      .opacity-0 {
+        /*opacity: 0;*/
+        background-color: tomato;
+      }
+      .hi {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+      }
+      .hi:hover {
+        visibility: hidden;
+      }
+
+      .square img[alt="사진"] {
+        width: 200px;
+        /*height: 200px;*/
+      }
+
+      .overflow-hidden {
+          overflow-hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="square">original</div>
+    <div class="square d-none">d-none</div>
+    <div class="square invisible">invisible</div>
+    <div class="square opacity-0">opacity-0</div>
+    <div class="square">original</div>
+    <div class="hi">div</div>
+
+    <div class="square">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus
+        alias asperiores consectetur doloremque magni neque nesciunt provident
+        quasi quisquam reprehenderit sequi, vel. Alias, animi minus quod rerum
+        similique sint!
+      </p>
+      <img src="./pooh.png" alt="사진" />
+    </div>
+    <div class="square overflow-hidden">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus
+        alias asperiores consectetur doloremque magni neque nesciunt provident
+        quasi quisquam reprehenderit sequi, vel. Alias, animi minus quod rerum
+        similique sint!
+      </p>
+      <img src="./pooh.png" alt="사진" />
+    </div>
+    <div class="square">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus
+        alias asperiores consectetur doloremque magni neque nesciunt provident
+        quasi quisquam reprehenderit sequi, vel. Alias, animi minus quod rerum
+        similique sint!
+      </p>
+      <img src="./pooh.png" alt="사진" />
+    </div>
+    <div class="square">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus
+        alias asperiores consectetur doloremque magni neque nesciunt provident
+        quasi quisquam reprehenderit sequi, vel. Alias, animi minus quod rerum
+        similique sint!
+      </p>
+      <img src="./pooh.png" alt="사진" />
+    </div>
+  </body>
+</html>

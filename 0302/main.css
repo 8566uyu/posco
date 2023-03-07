@@ -1,0 +1,11 @@
+@import url(./span.css);
+
+p {
+  background: red;
+  color: white;
+}
+
+h3 {
+  background: black;
+  color: white;
+}

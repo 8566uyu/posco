@@ -1,0 +1,38 @@
+@charset =
+"UTF-8";
+body {
+}
+
+div {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.position-static {
+  background-color: pink;
+  top: 100ox;
+  left: 50px;
+}
+
+.position-relative {
+  background-color: aqua;
+  position: relative;
+  top: 100px;
+  left: 100px;
+}
+
+.position-absolute {
+  background-color: gold;
+  bottom: 50px;
+  left: 0px;
+}
+
+.position-fixed {
+  background-color: coral;
+  position: fixed;
+  top: 0px;
+  left: 0;
+}

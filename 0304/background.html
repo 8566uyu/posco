@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      .box {
+        display: flex;
+        display: inline-block;
+        width: 400px;
+        height: 500px;
+        border: 1px solid blue;
+        box-sizing: "border-box";
+      }
+      .background {
+        background-color: aqua;
+        background: palegreen;
+        background: linear-gradient(blue, tomato);
+      }
+      .backgroundimg {
+        background-image: url("./small_img.png");
+        background-repeat: no-repeat;
+
+        background-position: center;
+
+        background-attachment: scroll;
+        background-attachment: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box background"></div>
+    <div class="box backgroundimg"></div>
+  </body>
+</html>

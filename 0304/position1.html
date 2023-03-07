@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        background-color: saddlebrown;
+        position: relative;
+      }
+      .container > div {
+        background-color: tomato;
+        width: 100px;
+        height: 100px;
+      }
+      .item1 {
+        position: relative;
+        left: 50px;
+        top: 30px;
+      }
+
+      .item2 {
+        position: absolute;
+        right: 30px;
+        bottom: 100px;
+      }
+
+      .item3 {
+        position: fixed;
+        right: 100px;
+        top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item1">item1</div>
+      <div class="item2">item2</div>
+      <div class="item3">item3</div>
+    </div>
+  </body>
+</html>
