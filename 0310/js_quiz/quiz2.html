@@ -1,0 +1,65 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js_quiz 2번</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet" />
+
+    <style>
+      code {
+        display: inline-block;
+        margin: 1px 0;
+        padding: 2px;
+        border-radius: 3px;
+        background-color: #ededed;
+        font-family: 'Noto Sans Mono', monospace;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <h1> 도형 넓이 구하기</h1>
+    <p>
+      <code>rectangle()</code>함수는 매개변수로 두 개의 숫자를 입력받습니다. 예를 들어 인자(매개변수)로 5와 7이
+      들어왔다면 각각 가로 길이 5, 세로 길이 7을 의미합니다. <br />
+      <code>triangle()</code>함수는 매개변수로 두 개의 숫자를 입력받습니다. 예를 들어 인자(매개변수)로 4와 6이
+      들어왔다면 각각 밑변 길이 4, 높이 6을 의미합니다. <br />
+      <code>circle()</code>함수는 매개변수로 하나의 숫자를 입력받습니다. 예를 들어 인자(매개변수)로 10이 들어왔다면
+      반지름 10을 의미합니다. <br />
+    </p>
+
+    <ul>
+      <li>
+        출력 결과 예시:
+        <img src="./image/quiz2.png" alt="보기" />
+      </li>
+    </ul>
+
+    <script>
+      // TODO: 조건을 만족하는 javascript 코드를 작성해주세요.
+      let rectangle = (a,b) => {
+        return a*b;
+      }
+      let triangle = (a,b) => {
+        return (a*b)/2
+      }
+
+      let circle = (a) => {
+        return a*a*Math.PI
+      }
+      console.log(rectangle(5,7))
+      console.log(triangle(4,6))
+      console.log(circle(10))
+
+    </script>
+  </body>
+</html>
