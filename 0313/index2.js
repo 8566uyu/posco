@@ -1,20 +1,20 @@
-let div1 = document.getElementById('div1')
-console.log(div1)
+let div1 = document.getElementById("div1");
+console.log(div1);
 
-div1.innerHTML = '여기는 <b>첫번째</b> ㅌㅐ그입니다. &hearts;'
-console.log(div1.innerHTML)
+div1.innerHTML = '여기는 <b>첫번째</b> ㅌㅐ그입니다. &hearts;';
+console.log(div1.innerHTML);
 
-div1.innerText = '여기는 <b>첫번째</b> ㅌㅐ그입니다. &hearts;'
-console.log(div1.innerText)
-div1.textContent = '여기는 <b>첫번째</b> ㅌㅐ그입니다. &hearts;'
-console.log(div1.textContent)
+div1.innerText = '여기는 <b>첫번째</b> ㅌㅐ그입니다. &hearts;';
+console.log(div1.innerText);
+div1.textContent = '여기는 <b>첫번째</b> ㅌㅐ그입니다. &hearts;';
+console.log(div1.textContent);
 //innerText vs textContent => 태그가 그대로 보임
 // -textContent
 // - 공백문자 그대로 반환
 // - IE9 이전 버전에선 사용 안됨
 // - innerText
 // - 공백 문자 제거
-div1.innerHTML='<ul><li>1</li><li>2</li></ul>'
+div1.innerHTML='<ul><li>1</li><li>2</li></ul>';
 
 // 속성변경
 let naver = document.getElementById('naver')
@@ -32,7 +32,7 @@ console.log(h1)
 console.log(list)
 
 //1.style 속성 사용
-list.style.backgroundColor='purple'
+// list.style.backgroundColor='purple'
 for (let li of list) {
   li.style.backgroundColor = 'yellow';
   li.style.color = '#444';
@@ -69,7 +69,6 @@ p.innerText = '새로 추가된 p';
 p.style.fontWeight = '700';
 p.style.backgroundColor = 'red';
 
-//요소.append : 선택된 요소의 맨 마지막 자식으로 추가됨
 container.append(p);
 
 let p2 = document.createElement('p')
@@ -109,16 +108,18 @@ console.log(ul)
 
 
 
-//요소.append : 선택된 요소의 맨 마지막 자식으로 추가됨
-container.append(p);
 
-
-
-
-let img = document.createElement('img');
-container.append(img)
-img.setAttribute('src','./pooh.png')
+// let container1 = document.querySelector('.container1');
+// console.log(container1);
+//
+// let img = document.createElement('img');
+// img.innerHTML = img()
 
 let img = document.createElement('img');
 h2.innerText = 'img';
-h1.before(img);
+h1.before('');
+
+console.log($('button'))
+console.log(document.querySelectorAll('button'))
+
+$('button').css('color','red');
