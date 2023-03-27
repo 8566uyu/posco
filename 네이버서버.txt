@@ -1,5 +1,5 @@
 
-D4qf%PBD=c
+
 
 passwd
 
@@ -16,3 +16,5 @@ nvm use v18.15.0
 nvm ls
 
 
+
+ssh root@192.168.0.37
