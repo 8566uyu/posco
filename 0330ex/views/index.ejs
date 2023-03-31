@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- ajax 실습을 위해 jquery cdn 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<!--/axios 실습을 위해 axios cdn 추가-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script><script src="https://axios-http.com/kr/docs/intro"></script>
+</head>
+
+<body>
+<h1>동적 폼 실습</h1>
+<hr>
+<h2>실습1. axios get 회원가입</h2>
+<form name="register">
+        <label for="name">이름</label>
+        <input type="text" name="name" id="name" >
+        <br>
+
+        <fieldset>
+            <legend>성별</legend>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">남자</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">여자</label>
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend>생년월일</legend>
+            <!-- <input type="date"> -->
+
+            <select name="birthYear" id="year">
+                <% for (let i = 0; i < 50; i++) { %>
+                    <option value="<%= 2010 - i %>"><%= 2010 - i %></option>
+                <% } %>
+            </select>
+            <label for="year">년</label>
+            <select name="birthMonth" id="month">
+                <% for (let i = 1; i < 13; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select>
+            <label for="month">월</label>
+            <select name="birthDay" id="day">
+                <% for (let i = 1; i < 31; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select>
+            <label for="day">일</label>
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" id="travle" name="hobby" value="travle">
+            <label for="travle">여행</label>
+            <input type="checkbox" id="fashion" name="hobby" value="fashion">
+            <label for="fashion">패션</label>
+            <input type="checkbox" id="food" name="hobby" value="food">
+            <label for="food">음식</label>
+        </fieldset>
+        <br>
+
+        <button type="button" onclick="axiosGet()" >회원가입</button>
+
+
+<!--    <button type="button" onclick="ajaxGet();">ajax get 버튼</button>-->
+<!--    <button type="button" onclick="ajaxPost();">ajax post 버튼</button>-->
+<!--    <button type="button" onclick="axiosGet();">axios get 버튼</button>-->
+<!--    <button type="button" onclick="axiosPost();">axios post 버튼</button>-->
+</form>
+<div class="result"></div>
+<br>
+<hr>
+
+<h2>실습2. axios post 로그인</h2>
+<form  name="register1">
+    <!-- label의 for 값 = input 태그의 id 값 -->
+    <label for="id">아이디</label>
+    <input type="text" id="id" name="id" />
+    <label for="pw">비밀번호</label>
+    <input type="password" id="pw" name="pw "/>
+    <button type="button" onclick="axiosPost()" >로그인</button>
+    <br />
+</form>
+<div class="reesult"></div>
+
+<script>
+  const resultBox = document.querySelector('.result')
+
+
+  async function axiosGet() {
+    const form = document.forms['register']
+
+
+    const formInfo = {
+      name:form.name.value,
+      gender:form.gender.value,
+      birthYear:form.birthYear.value,
+      birthMonth:form.birthMonth.value,
+      birthDay:form.birthDay.value,
+    };
+
+
+    try {
+      const response = await axios({
+        url:'/axios',
+        method:'GET',
+        params:formInfo,
+      })
+      // console.log(response)
+      resultBox.textContent = `${ response.data.name }님 환영합니다! 가입이 완료되었습니다.`
+      resultBox.style.color = 'blue'
+    } catch (error) {
+      console.log('Error!', error.message)
+    }
+  }
+
+
+
+
+   async function axiosPost() {
+    const reesultBox = document.querySelector('.reesult')
+     const form = document.forms['register1']
+
+     //
+    // const formInfo = [{
+    //   id:form.id,
+    //
+    // }]
+try{
+  // console.log(form)
+  // console.log(form.id.value)
+      const response = await axios({
+        url:'/axios',
+        method:'POST',
+        data:{
+          id:form.id.value,
+          pw:form.pw.value,
+        }
+      })
+  // reesultBox.textContent = 'banana님 환영합니다! 가입이 완료되었습니다.'
+  // reesultBox.style.color = 'blue'
+  reesultBox.textContent = '아이디 또는 패스워드 오류'
+  reesultBox.style.color = 'red'
+      // console.log(response)
+}catch (error) {
+  console.log('Error!', error.message)
+}
+    }
+
+</script>
+</body>
+
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=`, initial-scale=1.0">-->
+<!--    <title>Document</title>-->
+
+<!--    &lt;!&ndash; axios 실습을 위해 axios cdn 추가 &ndash;&gt;-->
+<!--    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+
+<!--    <style>-->
+<!--      .success {-->
+<!--        color: blue;-->
+<!--        font-weight: 700;-->
+<!--        }-->
+<!--      -->
+<!--      .error {-->
+<!--        color: red;-->
+<!--        font-weight: 700;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<h1>axios 폼 전송 실습 풀이</h1>-->
+<!--<form name="register">-->
+<!--    <label for="username">이름</label>-->
+<!--    <input type="text" name="username" id="username">-->
+<!--    <br>-->
+
+<!--    <fieldset>-->
+<!--        <legend>성별</legend>-->
+<!--        <input type="radio" id="male" name="gender" value="male">-->
+<!--        <label for="male">남자</label>-->
+<!--        <input type="radio" id="female" name="gender" value="female">-->
+<!--        <label for="female">여자</label>-->
+<!--    </fieldset>-->
+<!--    <br>-->
+
+<!--    <fieldset>-->
+<!--        <legend>생년월일</legend>-->
+<!--        &lt;!&ndash; <input type="date"> &ndash;&gt;-->
+
+<!--        <select name="birthYear" id="year">-->
+<!--            <% for (let i = 0; i < 50; i++) { %>-->
+<!--                <option value="<%= 2010 - i %>"><%= 2010 - i %></option>-->
+<!--            <% } %>-->
+<!--        </select>-->
+<!--        <label for="year">년</label>-->
+<!--        <select name="birthMonth" id="month">-->
+<!--            <% for (let i = 1; i < 13; i++) { %>-->
+<!--                <option value="<%= i %>"><%= i %></option>-->
+<!--            <% } %>-->
+<!--        </select>-->
+<!--        <label for="month">월</label>-->
+<!--        <select name="birthDay" id="day">-->
+<!--            <% for (let i = 1; i < 31; i++) { %>-->
+<!--                <option value="<%= i %>"><%= i %></option>-->
+<!--            <% } %>-->
+<!--        </select>-->
+<!--        <label for="day">일</label>-->
+<!--    </fieldset>-->
+<!--    <br>-->
+
+<!--    <fieldset>-->
+<!--        <legend>관심사</legend>-->
+<!--        <input type="checkbox" id="travle" name="hobby" value="travle">-->
+<!--        <label for="travle">여행</label>-->
+<!--        <input type="checkbox" id="fashion" name="hobby" value="fashion">-->
+<!--        <label for="fashion">패션</label>-->
+<!--        <input type="checkbox" id="food" name="hobby" value="food">-->
+<!--        <label for="food">음식</label>-->
+<!--    </fieldset>-->
+<!--    <br>-->
+
+<!--    <button type="button" onclick="clickRegister();">회원가입</button>-->
+<!--</form>-->
+<!--<div class="register-result"></div>-->
+<!--<hr>-->
+
+<!--<p>app.js에 저장한 id는 banana이고, pw는 4321이다.</p>-->
+<!--<form name="login">-->
+<!--    <label for="userId">아이디</label>-->
+<!--    <input type="text" id="userId" name="userId">-->
+<!--    <label for="userPw">비밀번호</label>-->
+<!--    <input type="password" id="userPw" name="userPw">-->
+<!--    <button type="button" onclick="clickLogin();">로그인</button>-->
+<!--</form>-->
+<!--<div class="login-result"></div>-->
+
+<!--<script>-->
+<!--  const registerResult = document.querySelector('.register-result')-->
+<!--  const loginResult = document.querySelector('.login-result')-->
+
+<!--  async function clickRegister() {-->
+<!--    console.log('click register btn!')-->
+
+<!--    const form = document.forms['register']-->
+<!--    const formInfo = {-->
+<!--      username: form.username.value,-->
+<!--    }-->
+
+<!--    // sol1) promise then() -->
+<!--    // axios({-->
+<!--    //   url: '/practice1',-->
+<!--    //   method: 'GET',-->
+<!--    //   params: formInfo-->
+<!--    // }).then(function(response) {-->
+<!--    //   console.log(response)-->
+<!--    //   console.log(response.data) // { username: 'xxx'}-->
+<!--    //   registerResult.textContent = `${response.data.username}님 환영합니다! 가입이 완료되었습니다`-->
+<!--    //   registerResult.classList.add('success')-->
+<!--    // })-->
+
+<!--    // sol2) async/await -->
+<!--    const response = await axios({-->
+<!--      url: '/practice1',-->
+<!--      method: 'GET',-->
+<!--      params: formInfo-->
+<!--    })-->
+<!--    console.log(response)-->
+<!--    console.log(response.data) // { username: 'xxx'}-->
+<!--    registerResult.textContent = `${response.data.username}님 환영합니다! 가입이 완료되었습니다`-->
+<!--    registerResult.classList.add('success')-->
+<!--  }-->
+
+<!--  function clickLogin() {-->
+<!--    console.log('click login btn!')-->
+
+<!--    const form = document.forms['login'];-->
+<!--    const formInfo = {-->
+<!--      userId: form.userId.value,-->
+<!--      userPw: form.userPw.value-->
+<!--    }-->
+
+<!--    axios({-->
+<!--      url: '/practice2',-->
+<!--      method: 'POST',-->
+<!--      data: formInfo-->
+<!--    }).then(function(response) {-->
+<!--      console.log(response)-->
+<!--      console.log(response.data)-->
+
+<!--      if (response.data.isLogin) {-->
+<!--        // 로그인 성공-->
+<!--        // response.data => {isLogin: true, userInfo: {…}}-->
+<!--        // => id님 로그인 성공 메세지-->
+<!--        loginResult.textContent = `${response.data.userInfo.userId}님 로그인 성공!!`-->
+<!--        loginResult.classList.remove('error')-->
+<!--        loginResult.classList.add('success')-->
+<!--      } else {-->
+<!--        // 로그인 실패 -->
+<!--        // response.data => {isLogin: false}-->
+<!--        // => 아이디 또는 패스워드 오류 메세지-->
+<!--        loginResult.textContent = `아이디 또는 패스워드 오류!!`-->
+<!--        loginResult.classList.remove('success')-->
+<!--        loginResult.classList.add('error')-->
+<!--      }-->
+<!--    })-->
+<!--  }-->
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
