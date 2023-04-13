@@ -146,6 +146,8 @@ io.on("connection", (socket) => {
     io.emit("newMessage", sendData);
   });
 
+  //dkdkr
+
   // 클라이언트로부터 새 메시지 수신 시 처리
   socket.on("newMessage", (data) => {
     console.log("socket on newMessage >> ", data);
