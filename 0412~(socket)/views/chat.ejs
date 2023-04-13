@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/static/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+<div id='root'>
+    <div id='chatList' >
+        <div id='chatHeader'>
+            <h1>chat</h1>
+        </div>
+
+        <div class="entry-box">
+            <input type="text" id="nickname" placeholder="Nickname" autofocus>
+            <button type="button" onclick="entry();">입장</button>
+        </div>
+
+        <div class="d-none chat-Box" >
+        <div id='chatBox' >
+            <div class='chat-wrap my-chat-text'>
+        <span class='chat-box my-chat'>
+                user1:user
+            </span>
+            </div>
+            <div class='chat-wrap other-chat-text'>
+        <span class='chat-box other-chat'>
+                user2:user
+            </span>
+            </div>
+<!--            <div class='chat-wrap my-chat-text'>-->
+<!--        <span class='chat-box my-chat'>-->
+<!--                자니..?-->
+<!--            </span>-->
+<!--            </div>-->
+<!--            <div class='chat-wrap other-chat-text'>-->
+<!--        <span class='chat-box other-chat'>-->
+<!--                아직..-->
+<!--            </span>-->
+<!--            </div>-->
+        </div>
+
+        <div class="text_box">
+            <select id="nick-list">
+<!--                <option value="me">나</option>-->
+<!--                <option value="me">너</option>-->
+            </select>
+            <p class="ag">에게</p>
+            <input type="text" id="message" />
+            <button type="button" onclick="send();" id="btn" >&#8682;</button>
+<!--            onKeypress="javascript:if(event.keyCode==13) {search_onclick_submit}"-->
+        </div>
+
+            <div id="wrapper">
+            <div class="scrollbar" id="style-7">
+                <div class="force-overflow"></div>
+            </div>
+            </div>
+
+        </div>
+<!--        <form class="pure-form">-->
+<!--            <input type="text" class="pure-input-rounded" />-->
+<!--            <button type="submit" class="pure-button">Search</button>-->
+<!--        </form>-->
+    </div>
+</div>
+
+<!--<div class="hi">-->
+<!--<button onclick="sayHello();">Hello</button>-->
+<!--<button onclick="sayStudy();">Study</button>-->
+<!--<button onclick="sayBye();">Bye</button>-->
+<!--<p id="form-server"></p>-->
+<!--</div>-->
+
+<script src="/static/index.js"></script>
+
+    <script>
+      //엔터키
+      // document.getElementById("message")
+      // .addEventListener("keyup", function(e) {
+      //   if (e.code === 'Enter') {
+      //     document.getElementById("btn").click();
+      //   }
+      // });
+
+      //
+      // function click_me() {
+      //   const message = document.querySelector('#message').value; // 입력된 메세지 값 가져오기
+      //   const chatBox = document.querySelector('#chatBox'); // 채팅 박스 요소 선택
+      //   const newMessage = document.createElement('div'); // 새로운 div 요소 생성
+      //   const newMessage2 = document.createElement('span'); // 새로운 span 요소 생성
+      //   newMessage.classList.add('chat-wrap', 'my-chat-text' ); // 클래스 추가
+      //   newMessage2.classList.add('chat-box', 'my-chat');
+      //   // newMessage.textContent = message; // 메세지 텍스트 추가
+      //   newMessage2.textContent = message;
+      //   newMessage.appendChild(newMessage2);
+      //   chatBox.appendChild(newMessage); // 채팅 박스에 새 메세지 요소 추가
+      //   // chatBox.appendChild(newMessage2);
+      //   document.querySelector('#message').value = ''; // 메세지 입력값 초기화
+      // };
+
+    </script>
+</body>
+</html>

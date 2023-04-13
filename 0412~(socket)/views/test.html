@@ -1,0 +1,296 @@
+<!--    <style>-->
+<!--      body {-->
+<!--        margin: 5px;-->
+<!--        padding: 0;-->
+<!--        position: relative;-->
+<!--      }-->
+<!--      .chat-list {-->
+<!--        background-color: #4a4a4a;-->
+<!--        height: 50vh;-->
+<!--        width: 50vw;-->
+<!--        color: black;-->
+<!--        padding: 5px;-->
+<!--      }-->
+<!--      .my-chat {-->
+<!--        border: solid 1px black;-->
+<!--        background-color: #fffff8;-->
+<!--        width: fit-content;-->
+<!--        position: absolute;-->
+<!--        top: 80px;-->
+<!--        left: 40vw;-->
+<!--        border-radius: 5px;-->
+<!--        padding: 5px;-->
+<!--      }-->
+<!--      .my-chat:after {-->
+<!--        position: absolute;-->
+<!--        top: 0;-->
+<!--        right: -3.5rem;-->
+<!--        content: "";-->
+<!--        background: url("https://assets.stickpng.com/images/5c9b3ec073ce21029beb8d79.png")-->
+<!--          center no-repeat;-->
+<!--        background-size: contain;-->
+<!--        border-radius: 50%;-->
+<!--        width: 3rem;-->
+<!--        height: 3rem;-->
+<!--      }-->
+<!--      .other-chat {-->
+<!--        border: solid 1px black;-->
+<!--        background-color: cornsilk;-->
+<!--        margin-top: 5px;-->
+<!--        width: fit-content;-->
+<!--        border-radius: 5px;-->
+<!--        padding: 5px;-->
+<!--        position: absolute;-->
+<!--        top: 120px;-->
+<!--        left: 10px;-->
+<!--      }-->
+<!--      .text_box {-->
+<!--        width: 100%;-->
+<!--        /*background-color: red;*/-->
+<!--        display: flex;-->
+<!--        justify-content: space-around;-->
+<!--      }-->
+<!--    </style>-->
+<!--  </head>-->
+<!--  <body>-->
+
+<!--  </body>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="ko">-->
+<!--  <head>-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <meta-->
+<!--      name="viewport"-->
+<!--      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"-->
+<!--    />-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge" />-->
+<!--    <title>MyChat</title>-->
+<!--    <link rel="stylesheet" href="/static/index.css" />-->
+<!--    <style>-->
+<!--      :root {-->
+<!--        font-size: 62.5%;-->
+<!--      }-->
+<!--      #root {-->
+<!--        display: flex;-->
+<!--        background-color: #eee;-->
+<!--        width: 50vw;-->
+<!--        height: 100vh;-->
+<!--        justify-content: center;-->
+<!--      }-->
+<!--      #chatWrap {-->
+<!--        display: flex;-->
+<!--        flex-direction: column;-->
+<!--        align-items: center;-->
+<!--        width: 100%;-->
+<!--      }-->
+<!--      .chat-box {-->
+<!--        background-color: mediumaquamarine;-->
+<!--        width: 100%;-->
+<!--        height: 80vh;-->
+<!--        position: relative;-->
+<!--      }-->
+<!--      .chat-tbox {-->
+<!--        display: inline-block;-->
+<!--        text-align: left;-->
+<!--        padding: 1rem;-->
+<!--        width: fit-content;-->
+<!--        height: fit-content;-->
+<!--        border-radius: 1rem;-->
+<!--        margin: 1rem;-->
+<!--        border: 0.01rem solid #4b4b4b;-->
+<!--      }-->
+<!--      .my-chat {-->
+<!--        background-color: #bbddbb;-->
+<!--        /*margin-right: 4.5rem;*/-->
+<!--      }-->
+<!--      /**/-->
+<!--      .my-chat:after {-->
+<!--        position: absolute;-->
+<!--        top: 0;-->
+<!--        right: -3.5rem;-->
+<!--        content: "";-->
+<!--        background: url("https://assets.stickpng.com/images/5c9b3ec073ce21029beb8d79.png")-->
+<!--          center no-repeat;-->
+<!--        background-size: contain;-->
+<!--        border-radius: 50%;-->
+<!--        width: 3rem;-->
+<!--        height: 3rem;-->
+<!--      }-->
+<!--      /**/-->
+<!--      .other-chat {-->
+<!--        background-color: #fff;-->
+<!--      }-->
+
+<!--      .my-chat-text {-->
+<!--        text-align: right;-->
+<!--      }-->
+<!--      .other-chat-text {-->
+<!--        text-align: left;-->
+<!--      }-->
+<!--    </style>-->
+<!--  </head>-->
+<!--  <body>-->
+<!--    <div id="root">-->
+<!--      <div id="chatWrap">-->
+<!--        <div id="chatHeader">-->
+<!--          <h1>chat</h1>-->
+<!--        </div>-->
+<!--        <div class="chat-box">-->
+<!--          <div id="chat-list" class="chat-list">-->
+<!--            &lt;!&ndash;  임시 대화 데이터 &ndash;&gt;-->
+<!--            <div class="chats my-chat">-->
+<!--              <span class="chat-tbox my-chat-text"> user1: msg1 </span>-->
+<!--            </div>-->
+<!--            <div class="chats other-chat">-->
+<!--              <span class="chat-tbox other-chat-text"> user2: msg2 </span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="text_box">-->
+<!--          <select id="nick-list"></select-->
+<!--          >에게-->
+<!--          <input type="text" id="message" />-->
+<!--          <button type="button">전송</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+  <meta charset='UTF-8' />
+  <meta
+      name='viewport'
+      content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'
+  />
+  <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+  <title>MyChat</title>
+  <link rel='stylesheet' href='./static/index.css' />
+  <style>
+    :root {
+      font-size: 62.5%;
+      }
+    #root {
+      display: flex;
+      background-color: #f3ffdd;
+      width: 50vw;
+      height: 100vh;
+      justify-content: center;
+
+      }
+    #chatList {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      }
+    #chatBox {
+      background-color: #f3ffdd;
+      width: 100%;
+      height: 80vh;
+      position: relative;
+      }
+    .chat-box {
+      display: inline-block;
+      text-align: left;
+      padding: 1.2rem;
+      width: fit-content;
+      height: fit-content;
+      border-radius: 2rem;
+      margin: 1rem;
+      /*border: 0.01rem solid cornsilk;*/
+      }
+    .my-chat {
+      background-color: #ff9ca3;
+      margin-top: 2rem;
+      /*margin-right: 4.5rem;*/
+      }
+    /**/
+    .my-chat:after {
+      position: absolute;
+      top: 0.5rem;
+      right: -0.7rem;
+      width: 3rem;
+      height: 3rem;
+      content: '';
+      background: url('/0412~(socket)/views/quokka1.png') center no-repeat;
+      background-size: contain;
+      border-radius: 50%;
+
+      }
+    .other-chat:after {
+      position: absolute;
+      top: -0.5rem;
+      left: -0.7rem;
+      width: 3rem;
+      height: 3rem;
+      content: '';
+      background: url('/0412~(socket)/views/quokka2.png') center no-repeat;
+      background-size: contain;
+      border-radius: 50%;
+
+      }
+    /**/
+    .other-chat {
+      background-color: #99cdb7;
+      }
+    .text_box {
+      /*width: 100%;*/
+      /*background-color: red;*/
+      /*display: flex;*/
+      /*justify-content: space-around;*/
+      }
+    .my-chat-text {
+      text-align: right;
+      margin-right: 1.5rem;
+      position: relative;
+      }
+    .other-chat-text{
+      text-align: left;
+      margin-left: 1.5rem;
+      position: relative;
+      }
+  </style>
+</head>
+<body>
+<div id='root'>
+  <div id='chatList'>
+    <div id='chatHeader'>
+      <h1>chat
+    </div>
+    <div id='chatBox'>
+      <div class='chat-wrap my-chat-text'>
+        <span class='chat-box my-chat'>
+                user1:user
+            </span>
+      </div>
+      <div class='chat-wrap other-chat-text'>
+        <span class='chat-box other-chat'>
+                user2:user
+            </span>
+      </div>
+      <div class='chat-wrap my-chat-text'>
+        <span class='chat-box my-chat'>
+                자니..?
+            </span>
+      </div>
+      <div class='chat-wrap other-chat-text'>
+        <span class='chat-box other-chat'>
+                아직..
+            </span>
+      </div>
+    </div>
+
+    <div class="text_box">
+      <select id="nick-list"></select
+      >에게
+      <input type="text" id="message" />
+      <button type="button">전송</button>
+    </div>
+  </div>
+</body>
+</html>

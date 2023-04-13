@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+:root {
+  font-size: 62.5%;
+}
+#root {
+  display: flex;
+  background-color: #f3ffdd;
+  width: 50vw;
+  height: 100vh;
+  justify-content: center;
+}
+
+/*닉네임 검색하고 입장*/
+.entry-box {
+  margin-top: 50%;
+}
+
+#chatList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.chat-Box {
+  background-color: #f3ffdd;
+  width: 100%;
+  height: 80vh;
+  position: relative;
+}
+#chatBox {
+  background-color: #f3ffdd;
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  overflow-y: scroll;
+  /*display: flex;*/
+  /*flex-direction: column-reverse;*/
+}
+::-webkit-scrollbar {
+  width: 4px; /* 세로축 스크롤바 길이 */
+  height: 10px; /* 가로축 스크롤바 길이 */
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {rgba(255,195,203,0.5)
+  border-radius: 8px;
+  background-color: rgba(153,205,183,0.5);
+  opacity: 50%;
+}
+::-webkit-scrollbar-button {
+  background-color: darkblue;
+  width: 20px;
+  height: 10px;
+}
+::-webkit-scrollbar-button:start {
+  background-color: transparent; /* Top, Left 방향의 이동버튼 */
+}
+::-webkit-scrollbar-button:end {
+  background-color: transparent; /* Bottom, Right 방향의 이동버튼 */
+}
+::-webkit-scrollbar-button:vertical:increment {
+}
+::-webkit-scrollbar-button:vertical:decrement {
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent; /* 우측 하단의 코너 부분 */
+}
+::-webkit-resizer {
+  background-color: transparent;
+}
+.chat-box {
+  display: inline-block;
+  text-align: left;
+  padding: 1.2rem;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 2rem;
+  margin: 1rem;
+  /*border: 0.01rem solid cornsilk;*/
+}
+.my-chat {
+  background-color: #ff9ca3;
+  margin-top: 2rem;
+  /*margin-right: 4.5rem;*/
+}
+/**/
+.my-chat:after {
+  position: absolute;
+  top: 0.5rem;
+  right: -0.7rem;
+  width: 3rem;
+  height: 3rem;
+  content: "";
+  background: url("/views/quokka1.png") center no-repeat;
+  background-size: contain;
+  border-radius: 50%;
+}
+.other-chat:after {
+  position: absolute;
+  top: -0.5rem;
+  left: -0.7rem;
+  width: 3rem;
+  height: 3rem;
+  content: "";
+  /*background: url("/views/quokka2.png") center no-repeat;*/
+  background-size: contain;
+  border-radius: 50%;
+}
+/**/
+.other-chat {
+  background-color: #99cdb7;
+}
+.text_box {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.my-chat-text {
+  text-align: right;
+  margin-right: 1.5rem;
+  position: relative;
+}
+.other-chat-text {
+  text-align: left;
+  margin-left: 1.5rem;
+  position: relative;
+}
+
+#nick-list {
+  border-radius: 2rem;
+  width: 5rem;
+  text-align: center;
+  border: solid 0.1em #ffb680;
+  /*background-color: transparent;*/
+  background-color: white;
+}
+
+#message {
+  /*background-color: transparent;*/
+  background-color: white;
+
+  border: solid 0.1em #ffb680;
+  border-radius: 2rem;
+  width: 25rem;
+}
+
+#btn {
+  background-color: #ffc3cb;
+  border: solid 0.1em #ff9ca3;
+  border-radius: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: large;
+  color: #4a4a4a;
+}
+
+/*실습 3*/
+.notice {
+  text-align: center;
+  color: #005397;
+  font-size: 12px;
+}
+
+.d-none {
+  display: none;
+}
