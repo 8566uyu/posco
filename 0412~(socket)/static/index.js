@@ -63,6 +63,7 @@ socket.on("entrySuccess", (nick) => {
   document.querySelector("#nickname").disabled = true; // 입력창 비활성화 (클릭 막기)
   document.querySelector(".entry-box > button").disabled = true; // 버튼 비활성화 (클릭 막기)
 
+  //..
   // 3. div.chat-box 요소 보이기
   document.querySelector(".chat-Box").classList.remove("d-none");
   document.querySelector(".entry-box").style.display = "none";
