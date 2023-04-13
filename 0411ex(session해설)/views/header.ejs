@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>app</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        }
+      body {
+        position: relative;
+        }
+        .header {
+          background-color: black;
+          color: white;
+          height: 50px;
+          font-size: xx-large;
+          }
+        .log_btn {
+          width: 50px;
+          height: 30px;
+          margin-left: 50px;
+          background-color: black;
+          color: white;
+          border: solid 1px black;
+          font-size: large;
+          cursor: pointer;
+          }
+        .song {
+          display: block;
+         margin-left: 150px;
+          }
+
+        .login {
+          border: solid 1px black;
+          width: 300px;
+          height: 300px;
+          /*display: block;*/
+          position: absolute;
+          top: 80%;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          text-align: center;
+          display: none;
+          background-color: white;
+          padding: 100px;
+          }
+        .title {
+            font-size: xx-large;
+          margin-bottom: 10px;
+          font-weight: bold;
+          padding-top: 10px;
+          }
+        .con {
+          color: gray;
+          }
+        .log_btn2 {
+          width: 60px;
+          height: 30px;
+          background-color: black;
+          color: white;
+          border: solid 1px black;
+          font-size: large;
+          cursor: pointer;
+          padding: 5px;
+          }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    Hello
+        <button type="button" onclick="login()" class="log_btn" id="log">login</button>
+</div>
+<div class="main">
+    <p class="song">👆🏻</p><br>
+
+    <p>로그인을 하세요 ! <b>빨리</b> !!!!!!!!!!!!!!!!!!</p> <br>
+    <p>여기는 home 입니다.</p>
+</div>
+<div class="lolo" >
+<div class="login" id="logi">
+    <p class="title">로그인</p>
+    <p class="con">ID : banana <br> PW : 1234</p> <br>
+    <form action="/getForm" name="login1" method="get" class="get-form">
+       <p > ID: <input type="text" name="id"  required><br></p>
+       <p> PW: <input type="password" name="pw" required><br></p><br>
+        <button type="submit" class="log_btn2">Login</button><br><br>
+        <a href="/">HOME</a>
+    </form>
+</div>
+</div>
+
+<!--<a href="/set">세션 설정</a>-->
+<!--<a href="/name">세션 확인</a>-->
+<!--<a href="/destroy">세션 삭제</a>-->
+<script !src="">
+function login() {
+  const see = document.querySelector('#logi');
+  if(see.style.display==='none'){
+    see.style.display = 'block';
+  }else {
+    see.style.display = 'none';
+  }
+}
+
+
+</script>
+</body>
+
+</html>
