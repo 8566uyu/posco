@@ -169,3 +169,8 @@
 .d-none {
   display: none;
 }
+
+/* [실습5] DM 기능 */
+.secret-chat div {
+  background-color: pink;
+  }

@@ -126,6 +126,7 @@ io.on("connection", (socket) => {
   function send() {
     const data = {
       myNick: myNick,
+      de: "삭제됨 ㅇㅅㅇ",
       msg: document.querySelector("#message").value,
       imageUrl: getRandomImageUrl(socket.id), // 랜덤 이미지 URL 추가
     };
@@ -137,16 +138,59 @@ io.on("connection", (socket) => {
   // 실습4 채팅창 메세지 전송
   socket.on("send", (obj) => {
     console.log("socket on send >> ", obj);
+    // [전체] 선택하고 전송시 -> dm: 'all'
+    // 특정 닉네임을 서ㅓㄴ택하고 전ㄴ송 -> dm: socket.id
 
     const sendData = {
       nick: obj.myNick,
+      de: obj.de,
       msg: obj.msg,
       imageUrl: getRandomImageUrl(socket.id), // 랜덤 이미지 URL 추가
     };
     io.emit("newMessage", sendData);
+
+    // 실습5 DM 기능 구현
+    // 만약에 dm 메세지라면, 그 특정 socket.id 에게만 메세지 전달
+    // { nick, dm, msg, imageUrl }
+    // 만약에 dm 메세지가 아니먄, 전체공지
+    // { nick,  msg, imageUrl }
+
+    //   if (obj.dm !== "all") {
+    //     let dmSocketId = obj.dm;
+    //     const sendData = {
+    //       nick: obj.myNick,
+    //       dm: "(비밀.)",
+    //       msg: obj.msg,
+    //       imageUrl: getRandomImageUrl(socket.id), // 랜덤 이미지 URL 추가
+    //     };
+    //
+    //     // 1. dm을 보내고자 하는 그 socket.id한테 메세지 전송
+    //     io.to(dmSocketId).emit("newMessage", sendData);
+    //     //2. dm을 보내고 있는 자기자신 메세지 전송
+    //     socket.emit("newMessage", sendData);
+    //   } else {
+    //     const sendData = {
+    //       nick: obj.myNick,
+    //       msg: obj.msg,
+    //       imageUrl: getRandomImageUrl(socket.id), // 랜덤 이미지 URL 추가
+    //     };
+    //     io.emit("newMessage", sendData);
+    //   }
   });
 
-  //dkdkr
+  // 5 실시간 메세지 삭제 반영
+  // socket.on("deleteMessage", (messageId) => {
+  //   const updateData = {
+  //     de: data.de,
+  //   };
+  //   io.emit("deleteMessage", messageId, updateData);
+  // });
+  // socket.on("deleteMessage", (messageId) => {
+  //   const updateData = {
+  //     de: "삭제됨",
+  //   };
+  //   io.emit("deleteMessage", messageId, updateData);
+  // });
 
   // 클라이언트로부터 새 메시지 수신 시 처리
   socket.on("newMessage", (data) => {

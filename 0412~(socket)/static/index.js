@@ -120,6 +120,7 @@ const imageUrls = [
 function send() {
   const data = {
     myNick: myNick,
+    de: "삭제됨 ㅇㅅㅇ",
     msg: document.querySelector("#message").value,
     imageUrl: getRandomImageUrl(socket.id),
   };
@@ -152,6 +153,24 @@ socket.on("newMessage", (data) => {
     newMessage.classList.add("chat-wrap", "my-chat-text"); // 클래스 추가
     newMessage2.classList.add("chat-box", "my-chat");
     newMessage2.innerText = data.msg;
+
+    newMessage2.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      if (confirm("정말 삭제하시겠습니까??") == true) {
+        //삭제
+        newMessage2.innerText = data.de;
+
+        const updateData = {
+          messageId: data.messageId, // 삭제할 메시지의 아이디
+          de: data.de, // 삭제될 메시지의 내용
+        };
+        // 서버로 삭제 요청 보내기
+        socket.emit("deleteMessage", updateData); // 서버로 삭제 요청 보내기
+      } else {
+        //취소
+        return false;
+      }
+    });
   } else {
     newMessage.classList.add("chat-wrap", "other-chat-text"); // 클래스 추가
     newMessage2.classList.add("chat-box", "other-chat");
@@ -160,6 +179,9 @@ socket.on("newMessage", (data) => {
 
   newMessage.appendChild(newMessage2);
   chatBox.appendChild(newMessage); // 채팅 박스에 새 메세지 요소 추가
+
+  // (선택) 메세지가 많아져서 스크롤이 생기더라도 하단 고정
+  chatBox.scrollTop = chatBox.scrollHeight;
 
   // 랜덤 이미지 선택
   if (data.nick !== myNick) {
@@ -183,6 +205,21 @@ socket.on("newMessage", (data) => {
     newMessage.appendChild(imageElement);
   }
 });
+
+const chatBox = document.querySelectorAll(".my-chat-text");
+document.querySelectorAll(".my-chat-text").style.onclick = "removeCheck()";
+
+// chatBox.addEventListener("contextmenu", function (e) {
+//   e.preventDefault();
+//   if (confirm("정말 삭제하시겠습니까??") == true) {
+//     function removeCheck() {
+//       document.querySelector(".my-chat-text").remove();
+//     }
+//   } else {
+//     //취소
+//     return false;
+//   }
+// });
 
 // // 이미지 랜덤
 // const randomImageUrl =
