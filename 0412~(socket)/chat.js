@@ -104,6 +104,12 @@ io.on("connection", (socket) => {
     "/views/quokka3.png",
   ];
 
+  // 사진 전송 이미지
+  const picture = {
+    1: "/views/quokka1.png",
+    2: "/views/quokka2.png",
+  };
+
   // 클라이언트별 이미지 URL 매핑 객체
   const clientImageUrls = new Map();
 
@@ -128,6 +134,7 @@ io.on("connection", (socket) => {
       myNick: myNick,
       de: "삭제됨 ㅇㅅㅇ",
       msg: document.querySelector("#message").value,
+      picture: picture[i],
       imageUrl: getRandomImageUrl(socket.id), // 랜덤 이미지 URL 추가
     };
     socket.emit("send", data);
@@ -145,6 +152,7 @@ io.on("connection", (socket) => {
       nick: obj.myNick,
       de: obj.de,
       msg: obj.msg,
+      picture: picture.id,
       imageUrl: getRandomImageUrl(socket.id), // 랜덤 이미지 URL 추가
     };
     io.emit("newMessage", sendData);
@@ -178,6 +186,8 @@ io.on("connection", (socket) => {
     //   }
   });
 
+  // 사진 삭제
+
   // 5 실시간 메세지 삭제 반영
   // socket.on("deleteMessage", (messageId) => {
   //   const updateData = {
@@ -196,6 +206,20 @@ io.on("connection", (socket) => {
   socket.on("newMessage", (data) => {
     console.log("socket on newMessage >> ", data);
   });
+});
+
+// 링크 서버 요청 처리
+
+// // 서버 측의 라우팅 코드
+// app.get("/goToChatHong", function (req, res) {
+//   // 클라이언트에게 chat(hong).ejs 페이지로 리다이렉션
+//   res.redirect("/views/chat(hong).ejs");
+// });
+
+// 서버 측 라우팅 로직 예시 (Node.js + Express.js)
+app.get("/views/chat(hong).ejs", function (req, res) {
+  // chat(hong).ejs 파일을 렌더링하여 전송
+  res.render("chat(hong)");
 });
 
 // 주의) socket 을 사용할 때는 http.listen으로 PORT 열어야 함!!!

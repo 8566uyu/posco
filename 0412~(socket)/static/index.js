@@ -66,9 +66,13 @@ socket.on("entrySuccess", (nick) => {
   //..
   // 3. div.chat-box 요소 보이기
   document.querySelector(".chat-Box").classList.remove("d-none");
+  document.querySelector(".roomWrap").classList.remove("d-none");
+  document.querySelector(".title").classList.remove("d-none");
+
   document.querySelector(".entry-box").style.display = "none";
   document.querySelector(".my-chat-text").style.display = "none";
   document.querySelector(".other-chat-text").style.display = "none";
+  document.querySelector(".h11").style.display = "none";
 });
 
 //실습3-2
@@ -79,7 +83,7 @@ socket.on("error", (msg) => {
 
 //닉네임 리스트 객체 업데이트하는 이벤트를 받음
 socket.on("updateNicks", (obj) => {
-  let options = `<option value='all'>전체</option>`;
+  let options = `<option value='all'>참여자 목록</option>`;
 
   //select#nick-list 요소의 option 추가
   for (let key in obj) {
@@ -115,13 +119,22 @@ const imageUrls = [
   "/views/quokka3.png",
 ];
 
+// 이미지 랜더
+const picture = ["/views/quokka1.png", "/views/quokka2.png"];
+
 // 채팅창 메세지 전송 Step1
 // "send" 이벤트 전송 { 닉네임, 입력메세지 }
 function send() {
+  // const fileInput = document.querySelector("#image-file"); // 이미지 파일을 선택하는 input 요소
+  // const file = fileInput.files[0]; // 선택된 파일
+  // const formData = new FormData(); // FormData 객체 생성
+  // formData.append("image", file); // 이미지 파일 추가
+
   const data = {
     myNick: myNick,
     de: "삭제됨 ㅇㅅㅇ",
     msg: document.querySelector("#message").value,
+    picture: picture.id,
     imageUrl: getRandomImageUrl(socket.id),
   };
   socket.emit("send", data);
@@ -146,8 +159,6 @@ socket.on("newMessage", (data) => {
   const chatBox = document.querySelector("#chatBox"); // 채팅 박스 요소 선택
   const newMessage = document.createElement("div"); // 새로운 div 요소 생성
   const newMessage2 = document.createElement("span"); // 새로운 span 요소 생성
-
-  // newMessage2.innerText = data.msg;
 
   if (data.nick === myNick) {
     newMessage.classList.add("chat-wrap", "my-chat-text"); // 클래스 추가
@@ -180,9 +191,6 @@ socket.on("newMessage", (data) => {
   newMessage.appendChild(newMessage2);
   chatBox.appendChild(newMessage); // 채팅 박스에 새 메세지 요소 추가
 
-  // (선택) 메세지가 많아져서 스크롤이 생기더라도 하단 고정
-  chatBox.scrollTop = chatBox.scrollHeight;
-
   // 랜덤 이미지 선택
   if (data.nick !== myNick) {
     const randomImageUrl = data.imageUrl;
@@ -204,10 +212,132 @@ socket.on("newMessage", (data) => {
     imageElement.style.borderRadius = "50%";
     newMessage.appendChild(imageElement);
   }
+
+  // 사진 보내기
+  // picture.addEventListener("click", function (e) {
+  //   const imageBox = document.querySelector(".imageBox"); // 채팅 박스 요소 선택
+  //   const newIms = document.createElement("div");
+  //   const newIms2 = document.createElement("ul");
+  //
+  //   newIms.classList.add("imageBox"); // 클래스 추가
+  //   newIms2.classList.add("image-box");
+  //
+  //   for (let i = 0; i < 6; i++) {
+  //     const li = document.createElement("li");
+  //     li.classList.add("images");
+  //     li.id = `img${i}`;
+  //
+  //     newIms.innerText = data.picture;
+  //   }
+  //
+  //   newMessage2.innerText = data.picture;
+  //
+  //   newMessage.appendChild(newMessage2);
+  //   newMessage.appendChild(newIms);
+  //   chatBox.appendChild(newMessage);
+  // });
+
+  // picture.addEventListener("click", function (e) {
+  //   const imageBox = document.querySelector(".imageBox"); // 채팅 박스 요소 선택
+  //   const newIms = document.createElement("div");
+  //   const newIms2 = document.createElement("ul");
+  //
+  //   newIms.classList.add("imageBox"); // 클래스 추가
+  //   newIms2.classList.add("image-box");
+  //
+  //   for (let i = 0; i < 6; i++) {
+  //     const li = document.createElement("li");
+  //     li.classList.add("images");
+  //     li.id = `img${i}`;
+  //
+  //     // picture 객체에서 이미지 경로 가져오기
+  //     const imgSrc = picture[i + 1];
+  //
+  //     // 이미지를 생성하여 li 요소에 추가
+  //     const img = document.createElement("img");
+  //     img.src = imgSrc;
+  //     // li.appendChild(img);
+  //
+  //     // newIms2.appendChild(li);
+  //     newMessage.appendChild(img);
+  //
+  //     newMessage.appendChild(newMessage2);
+  //     chatBox.appendChild(newMessage);
+  //   }
+  //
+  //   newIms.appendChild(newIms2);
+  //   imageBox.appendChild(newIms);
+  const pic = document.querySelector(".images");
+  pic.addEventListener("click", function (e) {
+    const imageBox = document.querySelectorAll(".imageBox"); // 채팅 박스 요소 선택
+    const newIms = document.createElement("div");
+    const newIms2 = document.createElement("ul");
+    newIms.classList.add("imageBox"); // 클래스 추가
+    newIms2.classList.add("image-box");
+
+    for (let i = 0; i < 2; i++) {
+      const li = document.createElement("li");
+      li.classList.add("images");
+      li.id = `img${i}`;
+
+      // picture 객체에서 이미지 경로 가져오기
+      const imgSrc = picture[i];
+
+      // 이미지를 생성하여 li 요소에 추가
+      const img = document.createElement("img");
+      img.src = imgSrc;
+      li.appendChild(img);
+
+      // newIms2.appendChild(li);
+      newMessage.appendChild(img);
+
+      // newMessage.appendChild(newMessage2);
+      // chatBox.appendChild(newMessage);
+    }
+
+    // 이미지 클릭 이벤트 처리
+    // newMessage.addEventListener("click", function (e) {
+    //   // 클릭된 이미지 정보 처리 로직 작성
+    //   // e.target을 통해 클릭된 이미지 엘리먼트에 접근할 수 있음
+    //   // 예시: 클릭된 이미지의 src 값을 가져와서 사용
+    //   const clickedImgSrc = e.target.src;
+    //   console.log("클릭된 이미지 경로:", clickedImgSrc);
+    // });
+  });
+  // (선택) 메세지가 많아져서 스크롤이 생기더라도 하단 고정
+  chatBox.scrollTop = chatBox.scrollHeight;
 });
 
-const chatBox = document.querySelectorAll(".my-chat-text");
-document.querySelectorAll(".my-chat-text").style.onclick = "removeCheck()";
+// document.addEventListener("click", function (e) {
+//   if (e.target.classList.contains("images")) {
+//     // 이미지를 클릭한 경우
+//     const newMessage = document.createElement("div"); // 새로운 div 요소 생성
+//     const newMessage2 = document.createElement("span"); // 새로운 span 요소 생성
+//
+//     newMessage.classList.add("chat-wrap", "my-chat-text"); // 클래스 추가
+//     newMessage2.classList.add("chat-box", "my-chat");
+//     newMessage2.innerText = data.msg;
+//
+//     // picture 객체에서 이미지 경로 가져오기
+//     const imgSrc = picture[e.target.id.replace("img", "")];
+//     // for (let i = 0; i < 3; i++) {
+//     //   const li = document.createElement("li");
+//     //   li.classList.add("images");
+//     //   li.id = `img${i}`;
+//     // }
+//     // 이미지를 생성하여 newMessage 요소에 추가
+//     const img = document.createElement("img");
+//     img.src = imgSrc;
+//     newMessage.appendChild(img);
+//
+//     // newMessage.appendChild(newMessage2);
+//     chatBox.appendChild(newMessage);
+//   }
+// });
+
+// 삭제하기
+// const chatBox = document.querySelectorAll(".my-chat-text");
+// document.querySelectorAll(".my-chat-text").style.onclick = "removeCheck()";
 
 // chatBox.addEventListener("contextmenu", function (e) {
 //   e.preventDefault();
@@ -235,3 +365,53 @@ document.querySelectorAll(".my-chat-text").style.onclick = "removeCheck()";
 // // imageElement.appendChild(imageElement1);
 // newMessage.appendChild(imageElement);
 // }
+// });
+
+// 링크 서버 보내기
+// 클라이언트 측 JavaScript 파일 (client.js)
+// changePage 함수 정의
+// 버튼 클릭 시 이벤트 핸들러 함수 정의
+// $(document).ready(function () {
+//   // 버튼 클릭 시 서버로 요청 보내기
+//   $("#goToChatHongBtn").on("click", function () {
+//     $.ajax({
+//       url: "/goToChatHong", // 서버의 라우팅 경로
+//       method: "GET", // 요청 메소드
+//       success: function (response) {
+//         // 서버에서 응답이 성공적으로 돌아오면 페이지 이동
+//         window.location.href = "/views/chat(hong).ejs"; // 이동할 페이지 경로
+//       },
+//       error: function (xhr, status, error) {
+//         console.error("Failed to fetch chat(hong).ejs:", status);
+//       },
+//     });
+//   });
+// });
+
+// function loadChatHong() {
+//   // AJAX 요청으로 chat(hong).ejs 파일의 내용을 가져옴
+//   $.get("/views/chat(hong).ejs", function (data) {
+//     // 가져온 내용을 현재 페이지에 삽입
+//     $("#chatContainer").html(data);
+//   });
+// }
+
+function loadChatHong() {
+  // AJAX 요청으로 chat(hong).ejs 파일의 내용을 가져옴
+  $.get("/views/chat(hong).ejs", function (data) {
+    // 가져온 내용으로 현재 페이지의 내용을 대체
+    document.open();
+    document.write(data);
+    document.close();
+  });
+}
+
+function loadChatPark() {
+  // AJAX 요청으로 chat(hong).ejs 파일의 내용을 가져옴
+  $.get("/views/chat(park).ejs", function (data) {
+    // 가져온 내용으로 현재 페이지의 내용을 대체
+    document.open();
+    document.write(data);
+    document.close();
+  });
+}

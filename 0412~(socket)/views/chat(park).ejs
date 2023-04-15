@@ -9,15 +9,13 @@
 
     <link rel="stylesheet" href="/static/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Document</title>
 </head>
 <body>
 <div id='root'>
     <div id='chatList' >
         <div id='chatHeader'>
-            <h1 class="dd-none h11">Chat</h1>
-            <h1 class="d-none title">대기장소</h1>
+            <h1>chat 박명수</h1>
         </div>
 
 
@@ -94,18 +92,10 @@
             <div id="roomList">
                 <div id="roomHeader">채팅 방 목록</div>
                 <div id="roomSelect">
-                    <div class="roomEl active" data-id="1">
-                        단체방</div>
-                    <div class="roomEl" data-id="2">
-                        <button onclick="loadChatHong()">홍길동</button>
-                        </div>
+                    <div class="roomEl active" data-id="1">단체방</div>
+                    <div class="roomEl" data-id="2">홍길동</div>
                     <div class="roomEl" data-id="3">흥부</div>
-                    <div class="roomEl" data-id="4">
-<!--                        <button onclick="loadChatHong()">고독한 박명수</button>-->
-                        <button onclick="loadChatPark()">고독한 박명수</button>
-
-                        </div>
-                    <div id="chatContainer"></div>
+                    <div class="roomEl" data-id="4">고독한 박명수 <a href=""></a></div>
                 </div>
             </div>
         </div>
@@ -129,7 +119,6 @@
 <!--</div>-->
 
 <script src="/static/index.js"></script>
-
 
     <script>
       //엔터키
