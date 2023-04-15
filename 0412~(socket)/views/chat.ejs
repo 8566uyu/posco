@@ -21,20 +21,20 @@
         </div>
 
 
-        <div class="entry-box">
-            <input type="text" id="nickname" placeholder="Nickname" autofocus>
-            <button type="button" onclick="entry();">입장</button>
+        <div class="entry-box ">
+            <input type="text" id="nickname" placeholder="Nickname" autofocus >
+            <button type="button" onclick="entry();" >입장</button>
         </div>
 
         <div class="d-none chat-Box" >
         <div id='chatBox' >
-            <div class='chat-wrap my-chat-text' id="delete1">
-        <span class='chat-box my-chat'>
+            <div class='chat-wrap my-chat-text d-none' id="delete1">
+        <span class='chat-box my-chat d-none'>
                 user1:user
             </span>
             </div>
-            <div class='chat-wrap other-chat-text'>
-        <span class='chat-box other-chat'>
+            <div class='chat-wrap other-chat-text d-none'>
+        <span class='chat-box other-chat d-none'>
                 user2:user
             </span>
             </div>
@@ -95,14 +95,17 @@
                 <div id="roomHeader">채팅 방 목록</div>
                 <div id="roomSelect">
                     <div class="roomEl active" data-id="1">
-                        단체방</div>
+                        <button onclick="loadChatKdt()" class="chatBtn">kdt codingon</button>
+                    </div>
                     <div class="roomEl" data-id="2">
-                        <button onclick="loadChatHong()">홍길동</button>
+                        <button onclick="loadChatHong()" class="chatBtn">홍길동</button>
                         </div>
-                    <div class="roomEl" data-id="3">흥부</div>
+                    <div class="roomEl" data-id="3">
+                        <button onclick="loadChatBread()" class="chatBtn">장발장</button>
+                    </div>
                     <div class="roomEl" data-id="4">
 <!--                        <button onclick="loadChatHong()">고독한 박명수</button>-->
-                        <button onclick="loadChatPark()">고독한 박명수</button>
+                        <button onclick="loadChatPark()" class="chatBtn">고독한 박명수</button>
 
                         </div>
                     <div id="chatContainer"></div>
@@ -111,12 +114,12 @@
         </div>
 
 
-        <div>
-            <select id="nick-list">
-                <!--                <option value="me">나</option>-->
-                <!--                <option value="me">너</option>-->
-            </select>
-        </div>
+<!--        <div>-->
+<!--            <select id="nick-list">-->
+<!--                &lt;!&ndash;                <option value="me">나</option>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <option value="me">너</option>&ndash;&gt;-->
+<!--            </select>-->
+<!--        </div>-->
     </div>
 
 </div>
@@ -129,6 +132,7 @@
 <!--</div>-->
 
 <script src="/static/index.js"></script>
+<script src="/static/index(Park).js"></script>
 
 
     <script>

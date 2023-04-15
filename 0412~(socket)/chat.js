@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
-const PORT = 8000;
+const PORT = 8004;
 
 app.set("view engine", "ejs");
 app.use("/views", express.static(__dirname + "/views"));
@@ -106,7 +106,7 @@ io.on("connection", (socket) => {
 
   // 사진 전송 이미지
   const picture = {
-    1: "/views/quokka1.png",
+    1: "/views/park1.jpg",
     2: "/views/quokka2.png",
   };
 
@@ -128,13 +128,15 @@ io.on("connection", (socket) => {
     return imageUrl;
   }
 
+  // picture 객체에서 해당 이미지 경로 가져오기
+
   // "send" 이벤트 전송 { 닉네임, 입력메세지 }
   function send() {
     const data = {
       myNick: myNick,
       de: "삭제됨 ㅇㅅㅇ",
       msg: document.querySelector("#message").value,
-      picture: picture[i],
+      picture: picture.id,
       imageUrl: getRandomImageUrl(socket.id), // 랜덤 이미지 URL 추가
     };
     socket.emit("send", data);
@@ -152,7 +154,7 @@ io.on("connection", (socket) => {
       nick: obj.myNick,
       de: obj.de,
       msg: obj.msg,
-      picture: picture.id,
+      picture: picture[obj.picture],
       imageUrl: getRandomImageUrl(socket.id), // 랜덤 이미지 URL 추가
     };
     io.emit("newMessage", sendData);
@@ -202,10 +204,59 @@ io.on("connection", (socket) => {
   //   io.emit("deleteMessage", messageId, updateData);
   // });
 
+  // server.js
+
   // 클라이언트로부터 새 메시지 수신 시 처리
   socket.on("newMessage", (data) => {
     console.log("socket on newMessage >> ", data);
   });
+
+  // server.js
+
+  // // 클라이언트로부터의 "deleteMessage" 이벤트를 처리하는 부분
+  // socket.on("deleteMessage", (data) => {
+  //   console.log("socket on deleteMessage >> ", data);
+  //   const messageId = data.messageId; // 삭제할 메시지의 아이디
+  //   const deletedMessage = data.de; // 삭제될 메시지의 내용
+  //
+  //   // 메시지 삭제 로직 수행
+  //   // 이 부분에 실제로 데이터베이스나 저장소에서 해당 메시지를 삭제하는 로직을 구현하면 됩니다.
+  //
+  //   // 클라이언트에게 삭제된 메시지 정보를 전달
+  //   io.emit("deleteMessage", { messageId, de: deletedMessage });
+  // });
+  // 상대방 서버에서의 메시지 삭제 이벤트 발생
+  // 예시: socket.io를 사용한 이벤트 기반 통신
+
+  // 클라이언트에서 삭제 이벤트를 발생시키는 코드
+  // socket.emit("deleteMessage", {
+  //   messageId: "1234",
+  //   deletedMessage: "This is a deleted message",
+  // });
+  // 내 서버에서의 메시지 삭제 이벤트 수신 및 처리
+  // 예시: socket.io를 사용한 이벤트 기반 통신
+});
+
+// 서버측
+
+// messages 배열을 선언하고 초기 메시지를 추가
+const messages = [
+  { id: 1, content: "메시지 1" },
+  { id: 2, content: "메시지 2" },
+  { id: 3, content: "메시지 3" },
+];
+
+// DELETE 요청을 처리하는 핸들러
+app.delete("/messages/:id", (req, res) => {
+  const messageId = parseInt(req.params.id); // URL 파라미터로 전달된 메시지 ID
+  // 메시지 삭제 로직
+  const index = messages.findIndex((message) => message.id === messageId);
+  if (index !== -1) {
+    messages.splice(index, 1);
+    res.sendStatus(200); // 성공 상태 코드 반환
+  } else {
+    res.sendStatus(404); // 메시지가 없는 경우 에러 상태 코드 반환
+  }
 });
 
 // 링크 서버 요청 처리
@@ -215,6 +266,8 @@ io.on("connection", (socket) => {
 //   // 클라이언트에게 chat(hong).ejs 페이지로 리다이렉션
 //   res.redirect("/views/chat(hong).ejs");
 // });
+
+// 클라이언트 측
 
 // 서버 측 라우팅 로직 예시 (Node.js + Express.js)
 app.get("/views/chat(hong).ejs", function (req, res) {

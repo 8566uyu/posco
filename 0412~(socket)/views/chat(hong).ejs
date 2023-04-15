@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="/static/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -88,25 +89,16 @@
 <!--            <input type="text" class="pure-input-rounded" />-->
 <!--            <button type="submit" class="pure-button">Search</button>-->
 <!--        </form>-->
-        <div id="roomWrap" class="d-none roomWrap">
+        <div id="roomWrap" class=" roomWrap">
             <div id="roomList">
-                <div id="roomHeader">채팅 방 목록</div>
+                <div id="roomHeader">다른 방으로</div>
                 <div id="roomSelect">
-                    <div class="roomEl active" data-id="1">단체방</div>
-                    <div class="roomEl" data-id="2">홍길동</div>
-                    <div class="roomEl" data-id="3">흥부</div>
-                    <div class="roomEl" data-id="4">고독한 박명수 <a href=""></a></div>
+                    <div class="roomEl active" data-id="1">
+                        <button onclick="mainPage()" class="chatBtn">대기 장소로 이동</button></div>
                 </div>
             </div>
         </div>
 
-
-<!--        <div>-->
-<!--            <select id="nick-list">-->
-<!--                &lt;!&ndash;                <option value="me">나</option>&ndash;&gt;-->
-<!--                &lt;!&ndash;                <option value="me">너</option>&ndash;&gt;-->
-<!--            </select>-->
-<!--        </div>-->
     </div>
 
 </div>

@@ -9,30 +9,25 @@
 
     <link rel="stylesheet" href="/static/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
-    <style>
-      .entry-box2 {
-        margin-top: -1rem;
-        }
-
-    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Document</title>
 </head>
 <body>
 <div id='root'>
     <div id='chatList' >
         <div id='chatHeader'>
-            <h1>고독한 박명수</h1>
+            <h1>장발장</h1>
         </div>
 
 
-        <div class="entry-box entry-box2">
-            <input type="text" id="nickname" placeholder="Nickname" autofocus>
-            <button type="button" onclick="entry();">입장</button>
-        </div>
+<!--        <div class="entry-box">-->
+<!--            <input type="text" id="nickname" placeholder="Nickname" autofocus>-->
+<!--            <button type="button" onclick="entry();">입장</button>-->
+<!--        </div>-->
 
-        <div class="d-none chat-Box" >
+        <div class="d-none chat-Box dd-none" >
         <div id='chatBox' >
-            <div class='chat-wrap my-chat-text d-none' id="delete1">
+            <div class='chat-wrap my-chat-text' id="delete1 d-none">
         <span class='chat-box my-chat d-none'>
                 user1:user
             </span>
@@ -54,7 +49,7 @@
 <!--            </div>-->
         </div>
 
-        <div class="text_box text_box2">
+        <div class="text_box">
             <input type="text" id="message" />
             <button type="button" onclick="send();" id="btn" >&#8682;</button>
 <!--            onKeypress="javascript:if(event.keyCode==13) {search_onclick_submit}"-->
@@ -69,10 +64,10 @@
             <div class="imageBox">
                 <ul class="image-box">
                     <li class="images" id="img">
-                        <img src="/views/park1.jpg">
+                        <img src="/views/quokka1.png">
                     </li>
                     <li>
-                        <img src="/views/park1.jpg">
+                        <img src="/views/quokka2.png">
                     </li>
 <!--                    <li>-->
 <!--                        <img src="https://place-hold.it/30">-->
@@ -104,13 +99,6 @@
             </div>
         </div>
 
-
-        <div>
-            <select id="nick-list">
-                <!--                <option value="me">나</option>-->
-                <!--                <option value="me">너</option>-->
-            </select>
-        </div>
     </div>
 
 </div>
@@ -122,7 +110,7 @@
 <!--<p id="form-server"></p>-->
 <!--</div>-->
 
-<script src="/static/index(Park).js"></script>
+<script src="/static/index.js"></script>
 
     <script>
       //엔터키

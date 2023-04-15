@@ -119,8 +119,17 @@
 .text_box {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
+  /*justify-content: space-between;*/
+  /*justify-items: auto;*/
+  /*margin-left: 5rem;*/
+  /*align-items: center;*/
+  justify-content: center;
+  /*justify-items: center;*/
+  /*align-items: center;*/
 }
+
+
 .my-chat-text {
   text-align: right;
   margin-right: 1.5rem;
@@ -134,14 +143,15 @@
 
 #nick-list {
   border-radius: 2rem;
-  width: 10rem;
+  width: 15vw;
   text-align: center;
   border: solid 0.1em #ffb680;
   /*background-color: transparent;*/
   background-color: white;
-  margin-left: 35rem;
+  margin-left: 55vw;
   margin-top: -44rem;
   position: absolute;
+  /*justify-content: flex-end;*/
 }
 
 #message {
@@ -197,15 +207,18 @@ li {
 img {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+  /*border-radius: 80%;*/
 }
 
 #roomWrap {
-  width: 10rem;
-  margin-left: 50rem;
+  width: 15vw;
+  margin-left: 80vw;
   margin-top:20rem;
   position: absolute;
   /*display: none;*/
+  /*justify-content: flex-end;*/
+  /*justify-items: right;*/
+ 
   }
 
 
@@ -235,4 +248,10 @@ img {
 
 .roomEl:hover{
   background: #f0f0f0;
+  }
+
+
+.chatBtn {
+  background-color: transparent;
+  border: solid 1px transparent;
   }

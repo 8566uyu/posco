@@ -120,7 +120,7 @@ const imageUrls = [
 ];
 
 // 이미지 랜더
-const picture = ["/views/quokka1.png", "/views/quokka2.png"];
+const picture = ["/views/park1.jpg", "/views/quokka1.png"];
 
 // 채팅창 메세지 전송 Step1
 // "send" 이벤트 전송 { 닉네임, 입력메세지 }
@@ -441,14 +441,6 @@ socket.on("newMessage", (data) => {
 //     });
 //   });
 // });
-
-// function loadChatHong() {
-//   // AJAX 요청으로 chat(hong).ejs 파일의 내용을 가져옴
-//   $.get("/views/chat(hong).ejs", function (data) {
-//     // 가져온 내용을 현재 페이지에 삽입
-//     $("#chatContainer").html(data);
-//   });
-// }
 
 function mainPage() {
   // AJAX 요청으로 chat(hong).ejs 파일의 내용을 가져옴
