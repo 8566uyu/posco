@@ -22,6 +22,7 @@ const LifeCycleFuncChild = (props) => {
   // });
 
   // text state 가 바뀔떄마다 실행
+
   useEffect(() => {
     console.log("update!!!");
   }, [text]);

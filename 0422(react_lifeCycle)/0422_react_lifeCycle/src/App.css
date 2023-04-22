@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+.PostList {
+  text-align: center;
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.PostItem {
+  flex-wrap: wrap;
+  justify-items: center;
+  /*text-align: center;*/
+}
+
+.PostItem2 {
+  background-color: #f3ffdd;
+  width: 400px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.id {
+  font-weight: bold;
+}
+
+.title {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.body {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
