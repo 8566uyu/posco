@@ -1,0 +1,66 @@
+
+ $color-pink: pink;
+ $color-yellow: yellow;
+ $color-green: green;
+
+@mixin box($size) {
+  width: $size;
+  height: $size;
+}
+
+
+ @mixin keyframe($name, $circle) {
+   animation: #{$name} 4s infinite;
+
+   @keyframes #{$name} {
+     0% {
+       transform: translate(0, 0);
+     }
+
+     25% {
+       transform: translate($circle, 0);
+     }
+
+     50% {
+       transform: translate($circle, $circle);
+     }
+
+     75% {
+       transform: translate(0, $circle);
+     }
+
+     100% {
+       transform: translate(0, 0);
+
+     }
+   }
+ }
+
+
+ .SassComponent {
+  //display: flex;
+
+   .box {
+     //@include box(100px);
+     border-radius: 50%;
+     @include box(100px);
+
+
+     &.pink {
+
+
+       background-color: $color-pink;
+       @include keyframe(pinks, 10px );
+     }
+
+     &.yellow {
+       background-color: $color-yellow;
+       @include keyframe(yellows, 20px );
+     }
+
+     &.green {
+       background-color: $color-green;
+       @include keyframe(greens, 30px);
+     }
+   }
+ }

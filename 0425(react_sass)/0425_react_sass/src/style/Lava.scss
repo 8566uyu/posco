@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+
+
+.container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+}
+  & .circle1 {
+  background-color: #0600ff;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+  & .circle2 {
+  background-color: white;
+  top: 20px;
+  left: 10px;
+  width: 45px;
+  height: 45px;
+    z-index: 100;
+
+}
+  & .circle3 {
+  background-color: black;
+  top: 33px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+    z-index: 100;
+
+}
+  & .circle4 {
+  background-color: #6076ff;
+  top: 60px;
+  left: 65px;
+}
+  & .circle5 {
+  background-color: #8099ff;
+  top: 100px;
+  left: 120px;
+  z-index: 1;
+}
+  & .circle6 {
+  background-color: #a4c1ff;
+  top: 150px;
+  left: 135px;
+  z-index: 1;
+}
+  & .circle7 {
+  background-color: #bcd8ff;
+  top: 200px;
+  left: 190px;
+  z-index: 5;
+}
+  .gr {
+  position: absolute;
+  top: 190px;
+  z-index: 3;
+}
+
+}
