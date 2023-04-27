@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Header {
+  background-color: #ffeb88;
+  height: 100px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu-item {
+  margin: 0 8px;
+}
+
+.MainPage {
+  background-color: #fff;
+  min-height: 100vh;
+
+  &.Dark {
+    background-color: #333;
+  }
+}
+
+
+.ProductPage {
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+.NotFound {
+  background-color: rgb(255, 208, 236);
+  min-height: 100vh;
+}
+
+.ProductItem {
+  list-style: none;
+  background-color: white;
+  width: 80vw;
+  margin: 30px auto 0 auto;
+
+  &:hover {
+    font-weight: 700;
+
+  }
+}
